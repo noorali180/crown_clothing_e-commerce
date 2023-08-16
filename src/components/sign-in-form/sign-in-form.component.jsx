@@ -1,6 +1,6 @@
 // import { useEffect } from "react";
 // import { getRedirectResult } from "firebase/auth";
-import "./sign-in.scss";
+import "./sign-in-form.scss";
 
 import {
   //   auth,

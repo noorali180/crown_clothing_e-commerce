@@ -1,8 +1,9 @@
 import { initializeApp } from "firebase/app";
 import {
   getAuth,
-  signInWithRedirect,
+  // signInWithRedirect,
   signInWithPopup,
+  createUserWithEmailAndPassword,
   GoogleAuthProvider,
 } from "firebase/auth";
 
@@ -17,7 +18,7 @@ const firebaseConfig = {
   appId: "1:369544403079:web:586ca65ca1c22af9da0022",
 };
 
-const firebaseApp = initializeApp(firebaseConfig);
+initializeApp(firebaseConfig);
 
 const provider = new GoogleAuthProvider();
 
@@ -27,11 +28,11 @@ provider.setCustomParameters({
 
 export const auth = getAuth();
 export const signInWithGooglePopup = () => signInWithPopup(auth, provider);
-export const signInWithGoogleRedirect = () => signInWithRedirect(auth, provider);
+// export const signInWithGoogleRedirect = () => signInWithRedirect(auth, provider);
 
 export const db = getFirestore();
 
-export const createUserDocumentFromAuth = async (userAuth) => {
+export const createUserDocumentFromAuth = async (userAuth, additionalInformation = {}) => {
   // we have to see if there is an existing document refrence, //Note: Reference is a special type of object provided by google to firebase
 
   // doc(database, collection_name, unique identifire: which will distinguish between diff users.)...
@@ -49,6 +50,7 @@ export const createUserDocumentFromAuth = async (userAuth) => {
         displayName,
         email,
         createdAt,
+        ...additionalInformation,
       });
     } catch (error) {
       console.log("An error occured.", error.message);
@@ -56,4 +58,14 @@ export const createUserDocumentFromAuth = async (userAuth) => {
   }
 
   return userDocRef;
+};
+
+export const createAuthUserWithEmailAndPassword = async (email, password) => {
+
+  if(!email || !password) {
+    alert('please insert a valid email, and password');
+    return;
+  };
+
+  return createUserWithEmailAndPassword(auth, email, password);
 };
