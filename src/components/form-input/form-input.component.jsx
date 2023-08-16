@@ -1,11 +1,20 @@
-import "./input-field.scss";
+import "./form-input.scss";
 
-const Input = ({label, type, placeholder, }) => {
+const FormInput = ({ label, ...otherOptions }) => {
   return (
-    <div>
-        <label className="input-label">{label}</label>
+    <div className="group">
+      <input className="form-input" {...otherOptions} />
+      {label && (
+        <label
+          className={`${
+            otherOptions.value.length > 0 ? "shrink" : ""
+          } form-input-label`}
+        >
+          {label}
+        </label>
+      )}
     </div>
   );
 };
 
-export default Input;
+export default FormInput;
