@@ -30,10 +30,7 @@ const SignIn = () => {
     event.preventDefault();
 
     try {
-      await signInAuthUserWithEmailAndPassword(
-        email,
-        password
-      );
+      await signInAuthUserWithEmailAndPassword(email, password);
 
       clearFormFields();
     } catch (error) {

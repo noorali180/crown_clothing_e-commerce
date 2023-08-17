@@ -90,4 +90,4 @@ export const signOutUser = async () => await signOut(auth);
 // main function of it is keeping track of user auth.
 export const onAuthStateChangedListener = (callback) => {
   onAuthStateChanged(auth, callback);
-}
+};
