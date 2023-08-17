@@ -1,13 +1,11 @@
 // import { useEffect } from "react";
 // import { getRedirectResult } from "firebase/auth";
 import "./sign-in-form.styles.scss";
-import { useState, useContext } from "react";
-import { UserContext } from "../../contexts/user.context";
+import { useState } from "react";
 
 import {
   //   auth,
   signInWithGooglePopup,
-  createUserDocumentFromAuth,
   signInAuthUserWithEmailAndPassword,
   //   signInWithGoogleRedirect,
 } from "../../utils/firbase/firbase.util";
@@ -24,8 +22,6 @@ const SignIn = () => {
   const [formFields, setFormFields] = useState(defaultFormFields);
   const { email, password } = formFields;
 
-  const { setCurrentUser } = useContext(UserContext);
-
   const clearFormFields = () => {
     setFormFields(defaultFormFields);
   };
@@ -34,12 +30,10 @@ const SignIn = () => {
     event.preventDefault();
 
     try {
-      const response = await signInAuthUserWithEmailAndPassword(
+      await signInAuthUserWithEmailAndPassword(
         email,
         password
       );
-
-      setCurrentUser(response.user);
 
       clearFormFields();
     } catch (error) {
@@ -62,12 +56,10 @@ const SignIn = () => {
   };
 
   const signInWithGoogle = async () => {
-    const response = await signInWithGooglePopup();
+    await signInWithGooglePopup();
 
     // will pass the authorized user...
-    await createUserDocumentFromAuth(response.user);
-
-    setCurrentUser(response.user);
+    // await createUserDocumentFromAuth(response.user);
   };
 
   //   useEffect(async () => {

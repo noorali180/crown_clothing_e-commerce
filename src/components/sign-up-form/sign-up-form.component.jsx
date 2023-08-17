@@ -5,11 +5,9 @@ import {
   createUserDocumentFromAuth,
 } from "../../utils/firbase/firbase.util";
 
-import { useState, useContext } from "react";
+import { useState } from "react";
 import FormInput from "../form-input/form-input.component";
 import Button from "../button/button.component";
-
-import { UserContext } from "../../contexts/user.context";
 
 const defaultFormFields = {
   displayName: "",
@@ -21,8 +19,6 @@ const defaultFormFields = {
 const SignUp = () => {
   const [formFields, setFormFields] = useState(defaultFormFields);
   const { displayName, email, password, confirmPassword } = formFields;
-
-  const { setCurrentUser } = useContext(UserContext);
 
   const clearFormFields = () => {
     setFormFields(defaultFormFields);
@@ -45,8 +41,6 @@ const SignUp = () => {
       await createUserDocumentFromAuth(response.user, {
         displayName,
       });
-
-      setCurrentUser(response.user);
 
       clearFormFields();
     } catch (error) {
