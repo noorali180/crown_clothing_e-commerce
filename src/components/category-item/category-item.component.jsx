@@ -1,7 +1,7 @@
 import "./categroy-item.styles.scss";
 const CategroyItem = ({ category: { id, title, imageUrl } }) => {
   const large = title === "mens" || title === "womens" ? "large" : "";
-  
+
   return (
     <div className={`category-container ${large}`}>
       <div

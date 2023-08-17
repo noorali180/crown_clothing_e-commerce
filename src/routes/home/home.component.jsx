@@ -28,9 +28,7 @@ const Home = () => {
     },
   ];
 
-  return (
-      <Directory categories={categories} />
-  );
+  return <Directory categories={categories} />;
 };
 
 export default Home;

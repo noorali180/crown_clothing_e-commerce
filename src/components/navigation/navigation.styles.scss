@@ -1,11 +1,13 @@
-.navigation{
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 20px 50px;
-    margin-bottom: 15px;
+.navigation {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 50px;
+  margin-bottom: 15px;
 
-    &-link{
-        padding: 0 10px;
-    }
+  &-link {
+    padding: 0 10px;
+    text-transform: uppercase;
+    cursor: pointer;
+  }
 }

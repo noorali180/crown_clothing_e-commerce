@@ -1,7 +1,8 @@
 // import { useEffect } from "react";
 // import { getRedirectResult } from "firebase/auth";
 import "./sign-in-form.styles.scss";
-import { useState } from "react";
+import { useState, useContext } from "react";
+import { UserContext } from "../../contexts/user.context";
 
 import {
   //   auth,
@@ -23,6 +24,8 @@ const SignIn = () => {
   const [formFields, setFormFields] = useState(defaultFormFields);
   const { email, password } = formFields;
 
+  const { setCurrentUser } = useContext(UserContext);
+
   const clearFormFields = () => {
     setFormFields(defaultFormFields);
   };
@@ -35,6 +38,8 @@ const SignIn = () => {
         email,
         password
       );
+
+      setCurrentUser(response.user);
 
       clearFormFields();
     } catch (error) {
@@ -61,6 +66,8 @@ const SignIn = () => {
 
     // will pass the authorized user...
     await createUserDocumentFromAuth(response.user);
+
+    setCurrentUser(response.user);
   };
 
   //   useEffect(async () => {
