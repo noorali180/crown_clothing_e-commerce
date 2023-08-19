@@ -15,7 +15,7 @@ import CartDropDown from "../../components/cart-dropdown/cart-dropdown.component
 
 const Navigation = () => {
   const { currentUser, setCurrentUser } = useContext(UserContext);
-  const { isCartOpen, setIsCartOpen } = useContext(CartContext);
+  const { isCartOpen, setIsCartOpen, cartItems } = useContext(CartContext);
 
   const toggleCartDropDown = () => {
     setIsCartOpen(!isCartOpen);
@@ -51,7 +51,7 @@ const Navigation = () => {
             </Link>
           )}
 
-          <CartIcon onClick={toggleCartDropDown} />
+          <CartIcon onClick={toggleCartDropDown} itemCount={cartItems.length}/>
         </nav>
         {isCartOpen && <CartDropDown />}
       </header>
