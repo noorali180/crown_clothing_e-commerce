@@ -2,12 +2,19 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 20px 50px;
+  padding: 10px 20px;
   margin-bottom: 15px;
 
   &-link {
     padding: 0 10px;
     text-transform: uppercase;
     cursor: pointer;
+  }
+
+  &-links-container{
+    display: flex;
+    min-width: 300px;
+    align-items: center;
+    justify-content: space-between;
   }
 }
