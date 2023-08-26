@@ -1,16 +1,16 @@
-import "./categroy-item.styles.scss";
+import "./directory-item.styles.scss";
 const CategroyItem = ({ category: { id, title, imageUrl } }) => {
   const large = title === "mens" || title === "womens" ? "large" : "";
 
   return (
-    <div className={`category-container ${large}`}>
+    <div className={`directory-item-container ${large}`}>
       <div
         className="background-image"
         style={{
           backgroundImage: `url(${imageUrl})`,
         }}
       ></div>
-      <div className="category-body-container">
+      <div className="body">
         <h2>{title}</h2>
         <p>Shop Now</p>
       </div>

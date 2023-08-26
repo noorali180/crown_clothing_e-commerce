@@ -10,7 +10,16 @@ import {
   onAuthStateChanged,
 } from "firebase/auth";
 
-import { getFirestore, doc, getDoc, setDoc } from "firebase/firestore";
+import {
+  getFirestore,
+  doc,
+  getDoc,
+  setDoc,
+  collection,
+  writeBatch,
+  query,
+  getDocs,
+} from "firebase/firestore";
 
 const firebaseConfig = {
   apiKey: "AIzaSyBbSardoNMjzpvoJi_a00js_duo2Ll5Sjw",
@@ -34,6 +43,40 @@ export const signInWithGooglePopup = () => signInWithPopup(auth, provider);
 // export const signInWithGoogleRedirect = () => signInWithRedirect(auth, provider);
 
 export const db = getFirestore();
+
+export const createCollectionAndDocuments = async (
+  collectionName,
+  objectsToAdd
+) => {
+  const collectionRef = collection(db, collectionName);
+  const batch = writeBatch(db);
+
+  objectsToAdd.forEach((object) => {
+    const docRef = doc(collectionRef, object.title.toLowerCase());
+
+    // it will call the set for each object to add in database...
+    batch.set(docRef, object);
+  });
+
+  // it will start firing all the { batch statements }, at once to instantiate the transcactional manner...
+  await batch.commit();
+};
+
+export const getCategoriesAndDocuments = async () => {
+  const collectionRef = collection(db, "categories");
+  const q = query(collectionRef);
+
+  const querySnapshot = await getDocs(q);
+
+  const categoriesMap = querySnapshot.docs.reduce((acc, docSnapshot) => {
+    const {title, items} = docSnapshot.data();
+    acc[title.toLowerCase()] = items;
+
+    return acc;
+  }, {})
+
+  return categoriesMap;
+};
 
 export const createUserDocumentFromAuth = async (
   userAuth,
