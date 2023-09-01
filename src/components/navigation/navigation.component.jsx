@@ -18,7 +18,7 @@ const Navigation = () => {
   const { isCartOpen, setIsCartOpen, cartCount } = useContext(CartContext);
 
   const toggleCartDropDown = () => {
-    setIsCartOpen();
+    setIsCartOpen(!isCartOpen);
   };
 
   const signOutUserHandler = async () => {

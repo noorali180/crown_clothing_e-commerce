@@ -7,7 +7,7 @@ import { CartContext } from "../../contexts/cart.context";
 import { Link } from "react-router-dom";
 
 const CartDropDown = () => {
-  const { cartItems, setIsCartOpen } = useContext(CartContext);
+  const { cartItems, setIsCartOpen, isCartOpen } = useContext(CartContext);
   return (
     <div className="cart-dropdown-container">
       <div className="cart-items">
@@ -16,7 +16,7 @@ const CartDropDown = () => {
         })}
       </div>
       <Link to="/checkout">
-        <Button onClick={() => setIsCartOpen()}>Go To Checkout</Button>
+        <Button onClick={() => setIsCartOpen(!isCartOpen)}>Go To Checkout</Button>
       </Link>
     </div>
   );

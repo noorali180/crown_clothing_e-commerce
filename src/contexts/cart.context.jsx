@@ -119,8 +119,8 @@ export const CartProvider = ({ children }) => {
     });
   };
 
-  const toggleIsCartOpen = () => {
-    dispatch({ type: CART_ACTIONS.TOGGLE_IS_CART_OPEN, payload: !isCartOpen });
+  const setIsCartOpen = (bool) => {
+    dispatch({ type: CART_ACTIONS.TOGGLE_IS_CART_OPEN, payload: bool });
   };
 
   const addItemToCart = (product) => {
@@ -140,7 +140,7 @@ export const CartProvider = ({ children }) => {
 
   const value = {
     isCartOpen,
-    setIsCartOpen: toggleIsCartOpen,
+    setIsCartOpen,
     cartItems,
     addItemToCart,
     decreaseCartItemQuantity,
