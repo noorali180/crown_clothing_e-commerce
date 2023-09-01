@@ -16,7 +16,7 @@ const CartDropDown = () => {
         })}
       </div>
       <Link to="/checkout">
-        <Button onClick={() => setIsCartOpen(false)}>Go To Checkout</Button>
+        <Button onClick={() => setIsCartOpen()}>Go To Checkout</Button>
       </Link>
     </div>
   );

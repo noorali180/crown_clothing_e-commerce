@@ -15,10 +15,10 @@ import CartDropDown from "../../components/cart-dropdown/cart-dropdown.component
 
 const Navigation = () => {
   const { currentUser, setCurrentUser } = useContext(UserContext);
-  const { isCartOpen, setIsCartOpen, cartItems } = useContext(CartContext);
+  const { isCartOpen, setIsCartOpen, cartCount } = useContext(CartContext);
 
   const toggleCartDropDown = () => {
-    setIsCartOpen(!isCartOpen);
+    setIsCartOpen();
   };
 
   const signOutUserHandler = async () => {
@@ -51,7 +51,7 @@ const Navigation = () => {
             </Link>
           )}
 
-          <CartIcon onClick={toggleCartDropDown} itemCount={cartItems.length}/>
+          <CartIcon onClick={toggleCartDropDown} itemCount={cartCount}/>
         </nav>
         {isCartOpen && <CartDropDown />}
       </header>
