@@ -10,10 +10,10 @@ const CategroyItem = ({ category: { id, title, imageUrl } }) => {
           backgroundImage: `url(${imageUrl})`,
         }}
       ></div>
-      <div className="body">
-        <h2>{title}</h2>
-        <p>Shop Now</p>
-      </div>
+        <div className="body">
+          <h2>{title}</h2>
+          <p>Shop Now</p>
+        </div>
     </div>
   );
 };
