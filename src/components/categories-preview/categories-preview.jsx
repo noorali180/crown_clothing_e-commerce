@@ -9,7 +9,7 @@ const CategoriesPreview = () => {
   // const { categories } = useContext(CategoriesContext);
 
   //NOTE: useSelector runs every time whenever state changes, which is stored in (redux store);
-  const categories = useSelector(selectCategoriesMap)
+  const categories = useSelector(selectCategoriesMap);
 
   return (
     <div>
