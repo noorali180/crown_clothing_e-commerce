@@ -2,12 +2,25 @@ import "./cart-dropdown.styles.scss";
 import Button from "../button/button.component";
 import CardItem from "../cart-item/cart-item.component";
 
-import { useContext } from "react";
-import { CartContext } from "../../contexts/cart.context";
+// import { useContext } from "react";
+// import { CartContext } from "../../contexts/cart.context";
 import { Link } from "react-router-dom";
 
+import {
+  selectIsCartOpen,
+  selectCartItems,
+} from "../../store/cart/cart.selector";
+import { setIsCartOpen } from "../../store/cart/cart.action";
+import { useDispatch, useSelector } from "react-redux";
+
 const CartDropDown = () => {
-  const { cartItems, setIsCartOpen, isCartOpen } = useContext(CartContext);
+  // const { cartItems, setIsCartOpen, isCartOpen } = useContext(CartContext);
+  const dispatch = useDispatch();
+  const cartItems = useSelector(selectCartItems);
+  const isCartOpen = useSelector(selectIsCartOpen);
+
+  const checkoutClickHandler = () => dispatch(setIsCartOpen(!isCartOpen));
+
   return (
     <div className="cart-dropdown-container">
       <div className="cart-items">
@@ -16,7 +29,7 @@ const CartDropDown = () => {
         })}
       </div>
       <Link to="/checkout">
-        <Button onClick={() => setIsCartOpen(!isCartOpen)}>Go To Checkout</Button>
+        <Button onClick={checkoutClickHandler}>Go To Checkout</Button>
       </Link>
     </div>
   );

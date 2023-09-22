@@ -6,7 +6,7 @@ import reportWebVitals from "./reportWebVitals";
 import { BrowserRouter } from "react-router-dom";
 // import { UserProvider } from "./contexts/user.context";
 // import { CategoriesProvider } from "./contexts/categories.context";
-import { CartProvider } from "./contexts/cart.context.jsx";
+// import { CartProvider } from "./contexts/cart.context.jsx";
 
 import { Provider } from "react-redux";
 import { store } from "./store/store";
@@ -18,9 +18,9 @@ root.render(
       <BrowserRouter>
         {/* <UserProvider> */}
         {/* <CategoriesProvider> */}
-          <CartProvider>
+          {/* <CartProvider> */}
             <App />
-          </CartProvider>
+          {/* </CartProvider> */}
         {/* </CategoriesProvider> */}
         {/* </UserProvider> */}
       </BrowserRouter>
