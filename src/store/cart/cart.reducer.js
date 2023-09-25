@@ -7,7 +7,7 @@ const CART_INITIAL_STATE = {
 
 export const cartReducer = (state = CART_INITIAL_STATE, action) => {
   const { type, payload } = action;
-
+  console.log(state);
   switch (type) {
     case CART_ACTIONS.SET_CART_ITEMS:
       return {
@@ -22,6 +22,6 @@ export const cartReducer = (state = CART_INITIAL_STATE, action) => {
       };
 
     default:
-        return state;
+      return state;
   }
 };

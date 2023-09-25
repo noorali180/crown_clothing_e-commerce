@@ -26,11 +26,11 @@ export const removeCartItem = (cartItems, itemToRemove) => {
 
 const checkCartItems = (cartItems, itemToAdd) => {
   // check if cartItem already exist in the cartItems list.
-  const existingItem = cartItems.find((item) => item.id === itemToAdd.id);
+  const existingItem = cartItems?.find((item) => item.id === itemToAdd.id);
 
   // if yes then increment quantity of te item by 1, and return new array of items.
   if (existingItem) {
-    return cartItems.map((item) =>
+    return cartItems?.map((item) =>
       item.id === itemToAdd.id ? { ...item, quantity: item.quantity + 1 } : item
     );
   }
@@ -41,12 +41,12 @@ const checkCartItems = (cartItems, itemToAdd) => {
 
 const checkCartItemToDecrease = (cartItems, cartItemToDecrease) => {
   // check if item exists,
-  const existingItem = cartItems.find(
+  const existingItem = cartItems?.find(
     (item) => item.id === cartItemToDecrease.id
   );
   // if quantity is not equal to 1 than decrease it,
   if (existingItem && existingItem.quantity > 1) {
-    return cartItems.map((item) =>
+    return cartItems?.map((item) =>
       item.id === cartItemToDecrease.id
         ? { ...item, quantity: item.quantity - 1 }
         : item
@@ -57,11 +57,11 @@ const checkCartItemToDecrease = (cartItems, cartItemToDecrease) => {
 };
 
 const checkCartItemToRemove = (cartItems, cartItemToRemove) => {
-  const existingItem = cartItems.find(
+  const existingItem = cartItems?.find(
     (item) => item.id === cartItemToRemove.id
   );
 
   if (existingItem) {
-    return cartItems.filter((item) => item.id !== cartItemToRemove.id);
+    return cartItems?.filter((item) => item.id !== cartItemToRemove.id);
   }
 };

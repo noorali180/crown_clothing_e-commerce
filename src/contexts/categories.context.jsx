@@ -1,9 +1,7 @@
 import { createContext, useState, useEffect } from "react";
 // import SHOP_DATA from "../shop-data";
 
-import {
-  getCategoriesAndDocuments,
-} from "../utils/firbase/firbase.util";
+import { getCategoriesAndDocuments } from "../utils/firbase/firbase.util";
 
 export const CategoriesContext = createContext({
   categories: {},

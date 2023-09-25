@@ -21,7 +21,9 @@ const userReducer = (state, action) => {
     case USER_ACTIONS.SET_CURRENT_USER:
       return { ...state, currentUser: payload };
     default:
-      throw new Error(`UNHANDLED ERROR: ${type} cannot be recognized in UserReducer.`);
+      throw new Error(
+        `UNHANDLED ERROR: ${type} cannot be recognized in UserReducer.`
+      );
   }
 };
 
@@ -31,14 +33,14 @@ const INITIAL_STATE = {
 
 export const UserProvider = ({ children }) => {
   const [state, dispatch] = useReducer(userReducer, INITIAL_STATE);
-  const {currentUser} = state;
+  const { currentUser } = state;
 
   // const [currentUser, setCurrentUser] = useState(null);
 
   const setCurrentUser = (user) => {
-    dispatch({type: USER_ACTIONS.SET_CURRENT_USER, payload: user});
-  }
-  
+    dispatch({ type: USER_ACTIONS.SET_CURRENT_USER, payload: user });
+  };
+
   // we  will aattach the auth observer whenever the app mounts first time, to observer the auth all the time.
   useEffect(() => {
     // because it is an open listen, we have to force stop it from listening when it finished listening...
@@ -56,4 +58,3 @@ export const UserProvider = ({ children }) => {
 
   return <UserContext.Provider value={value}>{children}</UserContext.Provider>;
 };
-
