@@ -9,7 +9,7 @@ import { getCategoriesAndDocuments } from "../../utils/firbase/firbase.util";
 import { Provider } from "react-redux";
 import { useDispatch } from "react-redux";
 import { store } from "../../store/store";
-import { setCategories } from "../../store/category/categories.action";
+import { setCategories } from "../../store/category/categories.reducer";
 
 const Shop = () => {
   const dispatch = useDispatch();
