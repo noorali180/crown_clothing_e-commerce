@@ -10,7 +10,7 @@ import {
   selectIsCartOpen,
   selectCartItems,
 } from "../../store/cart/cart.selector";
-import { setIsCartOpen } from "../../store/cart/cart.action";
+import { setIsCartOpen } from "../../store/cart/cart.reducer";
 import { useDispatch, useSelector } from "react-redux";
 
 const CartDropDown = () => {

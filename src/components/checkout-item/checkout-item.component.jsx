@@ -7,7 +7,7 @@ import {
   decreaseCartItemQuantity,
   addItemToCart,
   removeCartItem,
-} from "../../store/cart/cart.action";
+} from "../../store/cart/cart.reducer";
 import { selectCartItems } from "../../store/cart/cart.selector";
 import { useDispatch, useSelector } from "react-redux";
 
@@ -26,16 +26,14 @@ const CheckoutItem = ({ checkoutItem }) => {
       <span className="quantity">
         <div
           className="arrow"
-          onClick={() =>
-            dispatch(decreaseCartItemQuantity(cartItems, checkoutItem))
-          }
+          onClick={() => dispatch(decreaseCartItemQuantity(checkoutItem))}
         >
           &#10094;
         </div>
         <span className="value">{quantity}</span>
         <div
           className="arrow"
-          onClick={() => dispatch(addItemToCart(cartItems, checkoutItem))}
+          onClick={() => dispatch(addItemToCart(checkoutItem))}
         >
           &#10095;
         </div>
@@ -43,7 +41,7 @@ const CheckoutItem = ({ checkoutItem }) => {
       <span className="price">{`$ ${price}`}</span>
       <div
         className="remove-button"
-        onClick={() => dispatch(removeCartItem(cartItems, checkoutItem))}
+        onClick={() => dispatch(removeCartItem(checkoutItem))}
       >
         &#10005;
       </div>

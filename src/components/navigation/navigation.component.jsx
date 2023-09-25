@@ -9,7 +9,7 @@ import {
   selectIsCartOpen,
   selectCartCount,
 } from "../../store/cart/cart.selector";
-import { setIsCartOpen } from "../../store/cart/cart.action";
+import { setIsCartOpen } from "../../store/cart/cart.reducer";
 
 import { ReactComponent as CrwnLogo } from "../../assets/logo.svg";
 
