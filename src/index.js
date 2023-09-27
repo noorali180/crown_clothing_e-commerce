@@ -18,13 +18,13 @@ import { promiseStripe } from "./utils/stripe/stripe.util";
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
-    <PersistGate persistor={persistor}>
+    <PersistGate persistor={persistor} >
       <Provider store={store}>
         <BrowserRouter>
           {/* <UserProvider> */}
           {/* <CategoriesProvider> */}
           {/* <CartProvider> */}
-          <Elements stripe={promiseStripe}>
+          <Elements stripe={promiseStripe}> {/* Element is just like a provider */}
             <App />
           </Elements>
           {/* </CartProvider> */}
