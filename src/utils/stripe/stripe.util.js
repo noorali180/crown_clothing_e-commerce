@@ -1,0 +1,6 @@
+import { loadStripe } from "@stripe/stripe-js";
+
+// NOTE: we have to pass publishable key to loadStripe in order to connect the stripe account to the app, but we have to hide the publishable key, so that only app while in the process environment can have access to it... 
+// solution: (.env) file... 
+
+export const promiseStripe = loadStripe(process.env.REACT_APP_STRIPE_PUBLISHABLE_KEY);

@@ -12,6 +12,9 @@ import { PersistGate } from "redux-persist/integration/react";
 import { Provider } from "react-redux";
 import { store, persistor } from "./store/store";
 
+import { Elements } from "@stripe/react-stripe-js";
+import { promiseStripe } from "./utils/stripe/stripe.util";
+
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
@@ -21,7 +24,9 @@ root.render(
           {/* <UserProvider> */}
           {/* <CategoriesProvider> */}
           {/* <CartProvider> */}
-          <App />
+          <Elements stripe={promiseStripe}>
+            <App />
+          </Elements>
           {/* </CartProvider> */}
           {/* </CategoriesProvider> */}
           {/* </UserProvider> */}
