@@ -15,6 +15,7 @@
   cursor: pointer;
   display: flex;
   justify-content: center;
+  align-items: center;
 
   &:hover {
     background-color: white;
@@ -41,6 +42,26 @@
       background-color: black;
       color: white;
       border: none;
+    }
+  }
+
+  &.button-payment{
+    margin-left: auto;
+    margin-top: 20px;
+    background-color: white;
+    color: black;
+    border: 1px solid black;
+
+    &:hover {
+      background-color: black;
+      color: white;
+      border: none;
+    }
+
+    & .spinner{
+      width: 30px;
+      height: 30px;
+
     }
   }
 }
