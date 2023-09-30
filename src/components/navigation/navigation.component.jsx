@@ -51,9 +51,6 @@ const Navigation = () => {
           <Link to="/shop" className="navigation-link">
             shop
           </Link>
-          <Link to="/contacts" className="navigation-link">
-            contacts
-          </Link>
 
           {currentUser ? (
             <span className="navigation-link" onClick={signOutUserHandler}>
